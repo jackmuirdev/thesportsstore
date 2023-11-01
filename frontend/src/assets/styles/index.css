@@ -139,3 +139,32 @@ hr {
   text-align: center;
   color: #000;
 }
+
+#dropdown-basic {
+  color: #000;
+  background: #fff;
+  border: #000 1px solid;
+  padding: 10px 20px;
+}
+
+.filtersbtn {
+  margin-left: -20px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.productcard {
+  height: 400px;
+}
+
+#productcard {
+  width: 310px;
+}
+
+.productimg {
+  height: 250px;
+}
+
+.productcol {
+  margin-top: -120px;
+}

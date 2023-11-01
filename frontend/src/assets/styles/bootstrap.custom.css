@@ -4450,7 +4450,7 @@ fieldset:disabled .btn {
 .card {
   --bs-card-spacer-y: 1.2rem;
   --bs-card-spacer-x: 1.2rem;
-  --bs-card-title-spacer-y: 0.6rem;
+  --bs-card-title-spacer-y: -10px;
   --bs-card-title-color: ;
   --bs-card-subtitle-color: ;
   --bs-card-border-width: var(--bs-border-width);
