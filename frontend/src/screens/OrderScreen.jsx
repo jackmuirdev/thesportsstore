@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Row, Col, ListGroup, Image, Button, Card } from 'react-bootstrap';
+import { Table, Row, Col, ListGroup, Image, Button, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
@@ -22,6 +22,8 @@ const OrderScreen = () => {
   const { data: paypal, isLoading: loadingPayPal, error: errorPayPal } = useGetPayPalClientIdQuery();
   
   const { userInfo } = useSelector((state) => state.auth);
+
+  const cart = useSelector((state) => state.cart);
   
   useEffect(() => {
     if (!errorPayPal && !loadingPayPal && paypal.clientId) {
@@ -93,56 +95,104 @@ const OrderScreen = () => {
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Shipping</h2>
-              <p>
-                <strong>Name: </strong> { order.user.name }
-              </p>
-              <p>
-                <strong>Email: </strong> { order.user.email }
-              </p>
-              <p>
-                <strong>Address: </strong> { order.shippingAddress.address }, { order.shippingAddress.city }, { order.shippingAddress.postcode }, { order.shippingAddress.country }
-              </p>
-              { order.isDelivered ? (
-                <Message variant="success">
-                  Delivered on {new Date(order.deliveredAt).toLocaleDateString()}
-                </Message>
-              ) : (
-                <Message variant="danger">Not delivered</Message>
-              ) }
+              <Row>
+                <Col>
+                  <h3>
+                    <strong>1. Delivery Address: </strong>
+                  </h3>
+                  <h6>
+                    {cart.shippingAddress.address}, 
+                    <br />
+                    {cart.shippingAddress.city},
+                    <br />
+                    {cart.shippingAddress.postcode},
+                    <br />
+                    {cart.shippingAddress.country}
+                  </h6>
+                </Col>
+                <Col>
+                  <h3>
+                    <strong>2. Billing Address: </strong>
+                  </h3>
+                  {cart.billAddress ? (
+                    <h6>
+                      {cart.billAddress.billingAddress}, 
+                      <br />
+                      {cart.billAddress.billingCity},
+                      <br />
+                      {cart.billAddress.billingPostcode}, 
+                      <br />
+                      {cart.billAddress.billingCountry}
+                    </h6>
+                  ) : (
+                    <p>Billing address not available</p>
+                  )}
+                </Col>
+              </Row>
+            
+              <Row>
+                <Col>
+                  { order.isDelivered ? (
+                    <Message variant="success">
+                      Delivered on {new Date(order.deliveredAt).toLocaleDateString()}
+                    </Message>
+                  ) : (
+                    <Message variant="danger">Not delivered</Message>
+                  ) }
+                </Col>
+              </Row>
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Payment Method</h2>
-              <p>
-                <strong>Method: </strong> {order.paymentMethod}
-              </p>
               { order.isPaid ? (
-                <Message variant="success">Paid on { order.paidAt }</Message>
+                <Message variant="success">Paid on {new Date(order.paidAt).toLocaleDateString()}</Message>
               ) : (
                 <Message variant="danger">Not paid</Message>
               ) }
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Order Items</h2>
-              { order.orderItems.map((item, index) => (
-                <ListGroup.Item key={index}>
+                <>
                   <Row>
-                    <Col md={1}>
-                      <Image src={item.image} alt={`${item.name}`} fluid rounded />
-                    </Col>
-                    <Col>
-                      <Link to={`/product/${item.product}`}>
-                        {item.name}
-                      </Link>
-                    </Col>
-                    <Col md={4}>
-                      {item.qty} x £{item.price} = £{ item.qty * item.price }
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-              )) }
+                  <Col>
+                    <h3><strong>3. Order Items</strong></h3>
+                  </Col>
+                </Row>
+                <Row>
+                  <Table striped hover responsive className="table-sm">
+                    <thead>
+                      <tr>
+                        <th className="center-content">Image</th>
+                        <th className="center-content">Item</th>
+                        <th className="center-content">Quantity</th>
+                        <th className="center-content">Price</th>
+                        <th className="center-content">Sub Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {order.orderItems.map((item, index) => (
+                        <tr key={index}>
+                          <td className="center-content" style={{ width: '20%' }}>
+                            <Image src={item.image} alt={item.name} fluid rounded style={{ width: "100%" }} />
+                          </td>
+                          <td className="center-content" style={{ width: '20%' }}>
+                            <Link to={`/product/${item._id}`}>{item.name}</Link>
+                          </td>
+                          <td className="center-content" style={{ width: '15%' }}>
+                            {item.qty}
+                          </td>
+                          <td className="center-content" style={{ width: '15%' }}>
+                            £{item.price}
+                          </td>
+                          <td className="center-content" style={{ width: '15%' }}>
+                            £{(item.qty * item.price).toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </Row>
+                </>
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -158,17 +208,16 @@ const OrderScreen = () => {
                   <Col>Items</Col>
                   <Col>£{order.itemsPrice}</Col>
                 </Row>
+              </ListGroup.Item>
 
+              <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
                   <Col>£{order.shippingPrice}</Col>
                 </Row>
+              </ListGroup.Item>
 
-                <Row>
-                  <Col>Tax</Col>
-                  <Col>£{order.taxPrice}</Col>
-                </Row>
-
+              <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
                   <Col>£{order.totalPrice}</Col>

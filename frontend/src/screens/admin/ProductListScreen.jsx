@@ -60,24 +60,22 @@ const ProductListScreen = () => {
         <Table striped hover responsive className='table-sm'>
           <thead>
             <tr>
-              <th>ID</th>
               <th>NAME</th>
               <th>PRICE</th>
               <th>CATEGORY</th>
-              <th>BRAND</th>
-              <th>Shipping</th>
+              <th>SIZE</th>
+              <th>COLOURS</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {data.products.map((product) => (
               <tr key={product._id}>
-                <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.category}</td>
-                <td>{product.brand}</td>
-                <td>{product.shippingCost}</td>
+                <td>{product.sizes}</td>
+                <td>{product.colours}</td>
                 <td>
                   <LinkContainer to={`/admin/product/${product._id}/edit`}>
                     <Button variant='light' className='btn-sm mx-2'>

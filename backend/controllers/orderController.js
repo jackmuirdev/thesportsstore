@@ -34,7 +34,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     });
 
     // calculate prices
-    const { itemsPrice, taxPrice, shippingPrice, totalPrice } =
+    const { itemsPrice, shippingPrice, totalPrice } =
       calcPrices(dbOrderItems);
 
     const order = new Order({
@@ -43,7 +43,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
       shippingAddress,
       paymentMethod,
       itemsPrice,
-      taxPrice,
       shippingPrice,
       totalPrice,
     });

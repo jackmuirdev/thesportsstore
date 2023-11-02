@@ -72,21 +72,17 @@ const Footer = () => {
                 Get In Touch
               </Navbar.Brand>
               <Nav>
-                <LinkContainer to='/'>
+                <LinkContainer to='/contact'>
                   <Nav.Link>
-                    Instagram
+                    Contact Us
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to='/'>
-                  <Nav.Link>
-                    Facebook
-                  </Nav.Link>
-                </LinkContainer>
-                <LinkContainer to='/'>
-                  <Nav.Link>
-                    TikTok
-                  </Nav.Link>
-                </LinkContainer>
+                <Nav.Link href="https://www.instagram.com/thekellencollection/" target='_blank'>
+                  Instagram
+                </Nav.Link>
+                <Nav.Link href="https://www.facebook.com/thekellencollection/" target='_blank'>
+                  Facebook
+                </Nav.Link>
               </Nav>
             </Navbar>
           </Col>
@@ -96,17 +92,17 @@ const Footer = () => {
                 Company
               </Navbar.Brand>
               <Nav>
-                <LinkContainer to='/'>
+                <LinkContainer to='/terms&conditions'>
                   <Nav.Link>
                     Terms & Conditions
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to='/'>
+                <LinkContainer to='/privacypolicy'>
                   <Nav.Link>
                     Privacy Policy
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to='/'>
+                <LinkContainer to='/accessibility'>
                   <Nav.Link>
                     Accessibility
                   </Nav.Link>

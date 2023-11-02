@@ -18,6 +18,8 @@ const ProductEditScreen = () => {
   const [countInStock, setCountInStock] = useState('0');
   const [description, setDescription] = useState('');
   const [shippingCost, setShippingCost] = useState('');
+  const [colours, setColours] = useState([]);
+  const [sizes, setSizes] = useState([]);
 
   const { data: product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
 
@@ -37,6 +39,8 @@ const ProductEditScreen = () => {
       setCountInStock(product.countInStock);
       setDescription(product.description);
       setShippingCost(product.shippingCost);
+      setColours(product.colours || []);
+      setSizes(product.sizes || []);
     }
   }, [product]);
 
@@ -53,6 +57,8 @@ const ProductEditScreen = () => {
         description,
         countInStock,
         shippingCost,
+        colours,
+        sizes,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success('Product Updated!');
       refetch();
@@ -101,11 +107,6 @@ const ProductEditScreen = () => {
           </Form.Group>
           {loadingUpload && <Loader />}
 
-          <Form.Group controlId="brand" className="my-2">
-            <Form.Label>Brand</Form.Label>
-            <Form.Control type="text" placeholder="Enter Brand" value={brand} onChange={(e) => setBrand(e.target.value)} />
-          </Form.Group>
-
           <Form.Group controlId="countInStock" className="my-2">
             <Form.Label>Quantity In Stock</Form.Label>
             <Form.Control type="number" placeholder="Enter Quantity" value={countInStock} onChange={(e) => setCountInStock(e.target.value)} />
@@ -121,7 +122,17 @@ const ProductEditScreen = () => {
             <Form.Control type="text" placeholder="Enter Description" value={description} onChange={(e) => setDescription(e.target.value)} />
           </Form.Group>
 
-          <Button type="submit" variant="primary" className="my-2">
+          <Form.Group controlId="colours" className="my-2">
+            <Form.Label>Colour</Form.Label>
+            <Form.Control type="text" placeholder="Enter Colours" value={colours.join(',')} onChange={(e) => setColours(e.target.value.split(','))} />
+          </Form.Group>
+
+          <Form.Group controlId="sizes" className="my-2">
+            <Form.Label>Sizes</Form.Label>
+            <Form.Control type="text" placeholder="Enter Sizes" value={sizes.join(',')} onChange={(e) => setSizes(e.target.value.split(','))} />
+          </Form.Group>
+
+          <Button type="submit" variant="primary" className="my-2 searchbtn">
             Update
           </Button>
         </Form>

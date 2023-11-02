@@ -55,7 +55,7 @@ const Header = () => {
                                     <FaShoppingCart /> Cart
                                     {
                                         cartItems.length > 0 && (
-                                            <Badge pill bg='success' style={{marginLeft:'5px'}}>
+                                            <Badge pill bg='danger' style={{marginLeft:'5px'}}>
                                                 { cartItems.reduce((a, c) => a + c.qty, 0) }
                                             </Badge>
                                         )
@@ -65,18 +65,21 @@ const Header = () => {
                             {userInfo ? (
                                 <NavDropdown title={userInfo.isAdmin ? 'Admin' : userInfo.name} id='usermenu'>
                                     <LinkContainer to='/profile'>
-                                    <NavDropdown.Item className='droptxt'>Profile</NavDropdown.Item>
+                                        <NavDropdown.Item className='droptxt'>Profile</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to='/myorders'>
+                                        <NavDropdown.Item className='droptxt'>My Orders</NavDropdown.Item>
                                     </LinkContainer>
                                     {userInfo.isAdmin && (
                                     <>
                                         <LinkContainer to='/admin/productlist'>
-                                        <NavDropdown.Item className='droptxt'>Products</NavDropdown.Item>
+                                            <NavDropdown.Item className='droptxt'>Products</NavDropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/admin/userlist'>
-                                        <NavDropdown.Item className='droptxt'>Users</NavDropdown.Item>
+                                            <NavDropdown.Item className='droptxt'>Users</NavDropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/admin/orderlist'>
-                                        <NavDropdown.Item className='droptxt'>Orders</NavDropdown.Item>
+                                            <NavDropdown.Item className='droptxt'>Orders</NavDropdown.Item>
                                         </LinkContainer>
                                     </>
                                     )}

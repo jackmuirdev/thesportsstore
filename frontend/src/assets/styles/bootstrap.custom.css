@@ -835,6 +835,11 @@ progress {
   margin-top: var(--bs-gutter-y);
 }
 
+.contact {
+  margin-top: 75px;
+  margin-left: -100px;
+}
+
 .col {
   flex: 1 0 0%;
 }

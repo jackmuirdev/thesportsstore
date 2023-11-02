@@ -6,31 +6,31 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
     <Nav className='justify-content-center my-3'>
       <Nav.Item>
         { step1 ? (
-          <LinkContainer to='/login'>
-            <Nav.Link>Sign In</Nav.Link>
+          <LinkContainer to='/cart'>
+            <Nav.Link>Bag</Nav.Link>
           </LinkContainer>
         ) : (
-          <Nav.Link disabled>Sign In</Nav.Link>
+          <Nav.Link disabled>Bag</Nav.Link>
         ) }
       </Nav.Item>
-
+      
       <Nav.Item>
         { step2 ? (
-          <LinkContainer to='/shipping'>
-            <Nav.Link>Shipping</Nav.Link>
+          <LinkContainer to='/login'>
+            <Nav.Link>Details</Nav.Link>
           </LinkContainer>
         ) : (
-          <Nav.Link disabled>Shipping</Nav.Link>
+          <Nav.Link disabled>Details</Nav.Link>
         ) }
       </Nav.Item>
 
       <Nav.Item>
         { step3 ? (
-          <LinkContainer to='/payment'>
-            <Nav.Link>Payment</Nav.Link>
+          <LinkContainer to='/shipping'>
+            <Nav.Link>Shipping</Nav.Link>
           </LinkContainer>
         ) : (
-          <Nav.Link disabled>Payment</Nav.Link>
+          <Nav.Link disabled>Shipping</Nav.Link>
         ) }
       </Nav.Item>
 

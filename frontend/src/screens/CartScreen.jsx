@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap';
+import { Table, Row, Col, Image, Form, Button } from 'react-bootstrap';
 import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
+import CheckoutSteps from "../components/CheckoutSteps";
 import { addToCart, removeFromCart } from '../slices/cartSlice';
 
 const CartScreen = () => {
@@ -13,75 +14,100 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const addToCartHandler = async (product, qty) => {
-    dispatch(addToCart({...product, qty}))
-  }
+  const addToCartHandler = (product, qty) => {
+    dispatch(addToCart({ ...product, qty }));
+  };
 
-  const removeFromCartHandler = async (id) => {
-    dispatch(removeFromCart(id))
-  }
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
 
   const checkoutHandler = () => {
     navigate('/login?redirect=/shipping');
-  }
+  };
 
-  return <Row>
-    <Col md={8}>
-      <h1 style={{marginBottom: '20px', marginTop: '20px'}}>Shopping Cart</h1>
-      { cartItems.length === 0 ? ( 
-        <Message>
-          Your cart is empty <Link to='/'>Go Back</Link>
-        </Message>
-      ) : (
-        <ListGroup variant="flush">
-          { cartItems.map((item) => (
-            <ListGroup.Item key={item._id} >
-              <Row>
-                <Col md={2}>
-                  <Image src={ item.image } alt={ item.name } fluid rounded />
-                </Col>
-                <Col md={3}>
-                  <Link to={`/product/${item._id}`}>{ item.name }</Link>
-                </Col>
-                <Col md={2}>
-                  ${item.price}
-                </Col>
-                <Col md={2}>
-                  <Form.Control as='select' value={item.qty} onChange={(e) => addToCartHandler(item, Number(e.target.value))}>
-                    {[...Array(item.countInStock).keys()].map((x) => (
-                    <option key={ x + 1 } value={ x + 1}>
-                      { x + 1 }
-                    </option>
-                    ))}
-                  </Form.Control>
-                </Col>
-                <Col md={2}>
-                  <Button type='button' variant="light" onClick={ () => removeFromCartHandler(item._id) }>
-                    <FaTrash />
-                  </Button>
-                </Col>
-              </Row>
-            </ListGroup.Item>
-          )) }
-        </ListGroup>
-      ) }
-    </Col>
-    <Col md={4}>
-      <Card style={{marginTop:"20px"}} >
-        <ListGroup variant="flush">
-          <ListGroup.Item>
-            <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty , 0)}) items</h2>
-            ${cartItems.reduce((acc, item) => acc + (item.qty * item.price), 0).toFixed(2)}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Button type='button' className='btn-block' disabled={cartItems.length === 0} onClick={ checkoutHandler }>
-              Proceed To Checkout
+  return (
+    <>
+      <CheckoutSteps step1 />
+      <Row>
+        <h1>Shopping Cart</h1>
+        {cartItems.length === 0 ? (
+          <Message>
+            Your cart is empty <Link to='/products'>Go Back</Link>
+          </Message>
+        ) : (
+          <Table striped hover responsive className="table-sm">
+            <thead>
+              <tr>
+                <th className="center-content">Image</th>
+                <th className="center-content">Item</th>
+                <th className="center-content">Quantity</th>
+                <th className="center-content">Price</th>
+                <th className="center-content">Sub Total</th>
+                <th className="center-content"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {cartItems.map((item) => (
+                <tr key={item._id}>
+                  <td className="center-content" style={{ width: '20%' }}>
+                    <Image src={item.image} alt={item.name} fluid rounded style={{ width: "100%" }} />
+                  </td>
+                  <td className="center-content" style={{ width: '20%' }}>
+                    <Link to={`/product/${item._id}`}>{item.name}</Link>
+                    <br />
+                    In Stock: {item.countInStock}
+                  </td>
+                  <td className="center-content" style={{ width: '15%' }}>
+                    <Form.Control
+                      as='select'
+                      value={item.qty}
+                      onChange={(e) => addToCartHandler(item, Number(e.target.value))}
+                    >
+                      {[...Array(item.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </td>
+                  <td className="center-content" style={{ width: '15%' }}>
+                    £{item.price}
+                  </td>
+                  <td className="center-content" style={{ width: '15%' }}>
+                    £{(item.qty * item.price).toFixed(2)}
+                  </td>
+                  <td className='center-content' style={{width: '5%'}}>
+                    <Button type='button' className='trashbtn' onClick={ () => removeFromCartHandler(item._id) }>
+                      <FaTrash />
+                    </Button> 
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+        </Row>
+        <Row>
+          <h5>
+            Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items:
+            £{cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+          </h5>
+        </Row>
+        <Row>
+          <Col>
+            <Button
+              type='button'
+              className='btn-block payoutbtn searchbtn'
+              disabled={cartItems.length === 0}
+              onClick={checkoutHandler}
+            >                
+              Proceed To Payment
             </Button>
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
-    </Col>
-  </Row>
-}
+          </Col>
+        </Row>
+    </>
+  );
+};
 
 export default CartScreen;

@@ -61,8 +61,19 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         url: `${PRODUCTS_URL}/top`,
       }),
       keepUnusedDataFor: 5,
-    })
+    }),
+    getRelatedProducts: builder.query({
+      query: (productId, category) => ({
+        url: `${PRODUCTS_URL}/related`,
+        params: {
+          productId,
+          category,
+        },
+      }),
+      providesTags: ['RelatedProduct'],
+      keepUnusedDataFor: 5,
+    }),
   })
 });
 
-export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation, useGetTopProductsQuery } = productsApiSlice;
+export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation, useGetTopProductsQuery, useGetRelatedProductsQuery } = productsApiSlice;

@@ -22,7 +22,6 @@ import store from './store.js';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
-import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
@@ -32,6 +31,11 @@ import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
 import ProductsScreen from './screens/ProductsScreen';
+import ContactScreen from './screens/ContactScreen';
+import MyOrderScreen from './screens/MyOrderScreen';
+import Privacy from './screens/company/Privacy';
+import Accessibility from './screens/company/Accessibility';
+import TermsConditions from './screens/company/TermsConditions';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,13 +49,17 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
       <Route path='/products' element={<ProductsScreen />} />
+      <Route path='/contact' element={<ContactScreen />} />
+      <Route path='/privacypolicy' element={< Privacy/>} />
+      <Route path='/terms&conditions' element={< TermsConditions/>} />
+      <Route path='/accessibility' element={< Accessibility/>} />
 
       <Route path='' element={<PrivateRoute />}>
         <Route path='/shipping' element={<ShippingScreen />} />
-        <Route path='/payment' element={<PaymentScreen />} />
         <Route path='/placeorder' element={<PlaceOrderScreen />} />
         <Route path='/order/:id' element={<OrderScreen />} />
         <Route path='/profile' element={<ProfileScreen />} />
+        <Route path='/myorders' element={<MyOrderScreen />} />
       </Route>
 
       <Route path='' element={<AdminRoute />}>

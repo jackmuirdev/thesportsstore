@@ -28,7 +28,7 @@ const orderSchema = mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      required: true,
+      required: false,
     },
     paymentResult: {
       id: { type: String },
@@ -37,11 +37,6 @@ const orderSchema = mongoose.Schema(
       email_address: { type: String },
     },
     itemsPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    taxPrice: {
       type: Number,
       required: true,
       default: 0.0,

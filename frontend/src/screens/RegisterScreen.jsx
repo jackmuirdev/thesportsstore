@@ -13,6 +13,7 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,47 +49,66 @@ const RegisterScreen = () => {
 
   return (
     <FormContainer>
-      <h1 className="my-5">Sign Up</h1>
+      <h1 className="mt-4">Sign Up</h1>
 
-      <Form onSubmit={submitHandler}>
-        {/* Name */}
-        <Form.Group controlId='name' className="my-3">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type='text' placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} />
-        </Form.Group>
-        
-        {/* Email Address */}
-        <Form.Group controlId='email' className="my-3">
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control type='email' placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </Form.Group>
-
-        {/* Password */}
-        <Form.Group controlId='password' className="my-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </Form.Group>
-
-        {/* Confirm Password */}
-        <Form.Group controlId='confirmPassword' className="my-3">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control type='password' placeholder="Confirm password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-        </Form.Group>
-
-        {/* Button */}
-        <Button type='submit' variant='primary' className="mt-2" disabled={ isLoading }>
-          Register
-        </Button>
-
-        { isLoading && <Loader /> }
-      </Form>
-
-      <Row className="py-3">
+      <Row className="">
         <Col>
           Already have an account?{' '}
           <Link to={ redirect ? `/login?redirect=${redirect}`: '/login' }>Login</Link>
         </Col>
       </Row>
+
+      <Form onSubmit={submitHandler}>
+        {/* Name */}
+        <Form.Group controlId='name' className="my-3">
+          <Form.Label>Name</Form.Label>
+          <Form.Control type='text' placeholder="Enter Name" value={name} required onChange={(e) => setName(e.target.value)} />
+        </Form.Group>
+        
+        {/* Email Address */}
+        <Form.Group controlId='email' className="my-3">
+          <Form.Label>Email Address</Form.Label>
+          <Form.Control type='email' placeholder="Enter Email" value={email} required onChange={(e) => setEmail(e.target.value)} />
+        </Form.Group>
+
+        {/* Password */}
+        <Form.Group controlId='password' className="my-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type='password' placeholder="Enter password" value={password} required onChange={(e) => setPassword(e.target.value)} />
+        </Form.Group>
+
+        {/* Confirm Password */}
+        <Form.Group controlId='confirmPassword' className="my-3">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control type='password' placeholder="Confirm password" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)} />
+        </Form.Group>
+
+        {/* Button */}
+        <Button type='submit' variant='primary' className="mt-2 searchbtn" disabled={ isLoading }>
+          Register
+        </Button>
+
+        { isLoading && <Loader /> }
+
+        <Row className="py-3">
+          <Col>
+            <Form.Group controlId="terms" className="my-3">
+              <Form.Check
+                type="checkbox"
+                label={
+                  <span>
+                    I accept the{' '}
+                    <Link to="/terms&conditions">Terms and Conditions</Link>
+                  </span>
+                }
+                required
+                checked={termsAccepted}
+                onChange={(e) => setTermsAccepted(e.target.checked)}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+      </Form>
     </FormContainer>
   )
 }

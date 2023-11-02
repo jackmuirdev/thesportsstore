@@ -41,7 +41,14 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1 className="my-5">Sign In</h1>
+      <h1 className="mt-4">Sign In</h1>
+
+      <Row className="">
+        <Col>
+          New Customer?{' '}
+          <Link to={ redirect ? `/register?redirect=${redirect}`: '/register' }>Register</Link>
+        </Col>
+      </Row>
 
       <Form onSubmit={submitHandler}>
         {/* Email Address */}
@@ -57,21 +64,14 @@ const LoginScreen = () => {
         </Form.Group>
 
         {/* Button */}
-        <Button type='submit' variant='primary' className="mt-2" disabled={ isLoading }>
+        <Button type='submit' variant='primary' className="mt-2 searchbtn" disabled={ isLoading }>
           Sign In
         </Button>
 
         { isLoading && <Loader /> }
       </Form>
-
-      <Row className="py-3">
-        <Col>
-          New Customer?{' '}
-          <Link to={ redirect ? `/register?redirect=${redirect}`: '/register' }>Register</Link>
-        </Col>
-      </Row>
     </FormContainer>
   )
 }
 
-export default LoginScreen
+export default LoginScreen;

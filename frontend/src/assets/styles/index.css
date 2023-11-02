@@ -66,6 +66,7 @@ header {
 .searchbtn {
   border: 1px black solid;
   color: #000;
+  background: none;
 }
 
 .searchbtn:hover {
@@ -157,6 +158,11 @@ hr {
   height: 400px;
 }
 
+.productcard h3{
+  margin-bottom: 5px;
+  margin-top: 30px;
+}
+
 #productcard {
   width: 310px;
 }
@@ -167,4 +173,73 @@ hr {
 
 .productcol {
   margin-top: -120px;
+}
+
+.large-input {
+  padding: 10px 10px;
+  margin-bottom: 20px;
+}
+
+.large-textarea {
+  padding-bottom: 30px;
+}
+
+.contact {
+  color: #000;
+}
+
+.contactimage {
+  max-width: 131%;
+  height: 90vh;
+  margin-left: -125px;
+  margin-top: -75px;
+}
+
+.profile {
+  margin: auto;
+  width: 40%;
+}
+
+a {
+  text-decoration: none;
+  color: #000000A6;
+}
+
+.qty {
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+}
+
+.product-title {
+  margin-bottom: -40px;
+}
+
+.add2cartbtn {
+  background: red;
+  color: #fff;
+  font-size: 20px;
+}
+
+.payoutbtn {
+  background: rgb(1, 207, 1);
+  color: #fff;
+  font-size: 20px;
+}
+
+.center-content {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.trashbtn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #000;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.trashbtn:hover {
+  background: red;
 }

@@ -10,6 +10,8 @@ const products = [
     countInStock: 3,
     rating: 3.5,
     numReviews: 10,
+    colour: ['white', 'green', 'grey'],
+    size: ['size 6', 'size 8']
   },
   {
     name: 'Product 2',
