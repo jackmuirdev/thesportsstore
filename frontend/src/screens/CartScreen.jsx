@@ -70,6 +70,7 @@ const CartScreen = () => {
                         </option>
                       ))}
                     </Form.Control>
+                    
                   </td>
                   <td className="center-content" style={{ width: '15%' }}>
                     £{item.price}

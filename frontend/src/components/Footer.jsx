@@ -1,38 +1,10 @@
 import React from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Navbar, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  const navigate = useNavigate();
-
-  const subscribeHandler = async () => {
-    const emailInput = document.querySelector('.footerform'); // Assuming you've given a class of 'footerform' to your Form.Control element
-    const email = emailInput.value;
-  
-    // Regular expression to validate email format
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  
-    if (!email) {
-      toast.error('Please enter your email.');
-    } else if (!email.match(emailPattern)) {
-      toast.error('Please enter a valid email address.');
-    } else {
-      try {
-        // Perform your subscription logic here
-        // ...
-        toast.success('Successfully Subscribed!');
-      } catch (err) {
-        toast.error(err);
-        navigate('/');
-      }
-    }
-  };
-  
 
   return (
     <footer>
@@ -41,8 +13,8 @@ const Footer = () => {
           <p>The Kellen Collection</p>
           <hr className='hr'/>
         </Row>
-        <Row>
-          <Col md={2} className='firstcol'>
+        <Row className='footerlinks d-flex justify-content-center align-items-center'>
+          <Col lg={4} md={4} sm={6} xs={6} className='footerlinkscol'>
             <Navbar>
               <Navbar.Brand>
                 My Account
@@ -66,17 +38,15 @@ const Footer = () => {
               </Nav>
             </Navbar>
           </Col>
-          <Col md={2}>
+          <Col lg={4} md={4} sm={6} xs={6} className='footerlinkscol'>
             <Navbar>
               <Navbar.Brand>
                 Get In Touch
               </Navbar.Brand>
               <Nav>
-                <LinkContainer to='/contact'>
-                  <Nav.Link>
-                    Contact Us
-                  </Nav.Link>
-                </LinkContainer>
+              <Nav.Link href="https://www.tiktok.com/thekellencollection/" target='_blank'>
+                  TikTok
+                </Nav.Link>
                 <Nav.Link href="https://www.instagram.com/thekellencollection/" target='_blank'>
                   Instagram
                 </Nav.Link>
@@ -86,7 +56,7 @@ const Footer = () => {
               </Nav>
             </Navbar>
           </Col>
-          <Col md={2}>
+          <Col lg={4} md={4} sm={12} xs={12} className='footerlinkscol'>
           <Navbar>
               <Navbar.Brand>
                 Company
@@ -110,23 +80,15 @@ const Footer = () => {
               </Nav>
             </Navbar>
           </Col>
-          <Col md={2} className='text-center'>
-          <Navbar>
-              <Navbar.Brand>
-                Subscribe For Latest Offers!
-              </Navbar.Brand>
-              <Form>
-                <Form.Control type='email' placeholder="Enter Email" className='footerform'></Form.Control>
-              </Form>
-              <Button type='submit' className="mt-2 searchbtn" variant="white" onClick={subscribeHandler}>
-                Subscribe
-              </Button>
-            </Navbar>
-          </Col>
         </Row>
         <Row>
           <Col className='text-center pt-3 copyright'>
             <p>The Kellen Collection &copy; {currentYear}. All rights reserved.</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col className='text-center copyright devware'>
+            <p>Developed by Jack Muir</p>
           </Col>
         </Row>
       </Container>

@@ -1275,7 +1275,7 @@ progress {
   }
   .col-md-6 {
     flex: 0 0 auto;
-    width: 50%;
+    width: 75%;
   }
   .col-md-7 {
     flex: 0 0 auto;
@@ -4269,6 +4269,8 @@ fieldset:disabled .btn {
   }
   .navbar-expand-lg .navbar-toggler {
     display: none;
+    position: absolute;
+    right: 10px;
   }
   .navbar-expand-lg .offcanvas {
     position: static;
@@ -4282,6 +4284,7 @@ fieldset:disabled .btn {
     transform: none !important;
     box-shadow: none;
     transition: none;
+    
   }
   .navbar-expand-lg .offcanvas .offcanvas-header {
     display: none;

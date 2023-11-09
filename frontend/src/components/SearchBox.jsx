@@ -19,7 +19,7 @@ const SearchBox = () => {
 
   return (
     <Form onSubmit={submitHandler} className="d-flex me-3">
-      <Form.Control type="text" name="q" variant="dark" onChange={(e) => setKeyword(e.target.value)} value={keyword} placeholder="Search Products..." style={{ width: "300px" }}></Form.Control>
+      <Form.Control type="text" name="q" variant="dark" className="search" onChange={(e) => setKeyword(e.target.value)} value={keyword} placeholder="Search Products..." style={{ width: "300px" }}></Form.Control>
       <Button type="submit" variant="white" className="searchbtn p-2 mx-2">
         Search
       </Button>

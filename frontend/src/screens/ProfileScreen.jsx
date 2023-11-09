@@ -41,7 +41,7 @@ const ProfileScreen = () => {
   };
   
   return <Row className="mt-5 text-center profile">
-    <Col className="mx-5">
+    <Col className="mx-3">
       <h1>User Profile</h1>
 
       <Form onSubmit={submitHandler}>

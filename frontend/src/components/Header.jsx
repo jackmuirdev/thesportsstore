@@ -31,10 +31,10 @@ const Header = () => {
 
     return (
         <header className='mb-3'>
-            <Navbar bg="white" expand="md" className='navbar' collapseOnSelect>
+            <Navbar bg="white" expand="lg" className='navbar' collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
-                        <Navbar.Brand>The Kellen Collection</Navbar.Brand>
+                        <Navbar.Brand className='title'>The Kellen Collection</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

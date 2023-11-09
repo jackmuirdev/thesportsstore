@@ -197,7 +197,7 @@ hr {
 
 .profile {
   margin: auto;
-  width: 40%;
+  width: 60%;
 }
 
 a {
@@ -242,4 +242,80 @@ a {
 
 .trashbtn:hover {
   background: red;
+}
+
+.footerlinks {
+  width: 60%;
+  margin: auto;
+}
+
+.footerlinkscol {
+  display: flex;
+  justify-content: center;
+}
+
+.devware {
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .navbtn {
+    margin: 0;
+  }
+  #usermenu {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #usermenu {
+    margin: 0 -75px 0 0;
+  }
+  .title {
+    margin-left: -75px;
+  }
+  .navbtn {
+    padding: 12px 10px;
+  }
+  .search {
+    width: 0;
+  }
+}
+
+@media (max-width: 1100px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: none !important;
+  }
+
+  .navbar-expand-lg .navbar-toggler {
+    display: block !important;
+  }
+
+  .navbar-expand-lg .collapsed ~ .navbar-collapse {
+    display: block !important;
+  }
+
+  .navbar-expand-lg .top-nav-collapse {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .title {
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .profile {
+    width: 80%;
+  }
 }
