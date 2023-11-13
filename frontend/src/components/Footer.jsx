@@ -44,7 +44,7 @@ const Footer = () => {
                 Get In Touch
               </Navbar.Brand>
               <Nav>
-              <Nav.Link href="https://www.tiktok.com/thekellencollection/" target='_blank'>
+              <Nav.Link href="https://www.tiktok.com/@thekellencollection" target='_blank'>
                   TikTok
                 </Nav.Link>
                 <Nav.Link href="https://www.instagram.com/thekellencollection/" target='_blank'>

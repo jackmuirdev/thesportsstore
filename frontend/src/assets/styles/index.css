@@ -258,6 +258,26 @@ a {
   font-size: 12px;
 }
 
+.productpgimg {
+  max-width: 100%;
+  height: 80vh;
+  width: 1000px;
+}
+
+.product-row {
+  margin-top: 50px;
+}
+
+.product-col {
+  width: auto;
+}
+
+@media (min-width: 1400px) {
+.container {
+  max-width: 2000px;
+}
+}
+
 @media only screen and (max-width: 1400px) {
   .navbtn {
     margin: 0;
