@@ -42,6 +42,8 @@ const CartScreen = () => {
                 <th className="center-content">Image</th>
                 <th className="center-content">Item</th>
                 <th className="center-content">Quantity</th>
+                <th className="center-content">Colour</th>
+                <th className="center-content">Size</th>
                 <th className="center-content">Price</th>
                 <th className="center-content">Sub Total</th>
                 <th className="center-content"></th>
@@ -71,6 +73,12 @@ const CartScreen = () => {
                       ))}
                     </Form.Control>
                     
+                  </td>
+                  <td className="center-content" style={{ width: '10%' }}>
+                    {item.colour}
+                  </td>
+                  <td className="center-content" style={{ width: '10%' }}>
+                    {item.size}
                   </td>
                   <td className="center-content" style={{ width: '15%' }}>
                     £{item.price}
