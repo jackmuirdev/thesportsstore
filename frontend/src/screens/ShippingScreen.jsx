@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FormContainer from '../components/FormContainer';
 import { saveShippingAddress, saveBillAddress } from "../slices/cartSlice";
 import CheckoutSteps from "../components/CheckoutSteps";
+import Meta from '../components/Meta';
 
 const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
@@ -39,6 +40,7 @@ const ShippingScreen = () => {
 
   return (
     <>
+      <Meta title="Shipping | The Kellen Collection" />
       <CheckoutSteps step1 step2 step3 />
       <FormContainer>
         <Form onSubmit={submitHandler} className="text-center">

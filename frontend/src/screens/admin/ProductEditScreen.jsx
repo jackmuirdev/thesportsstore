@@ -6,6 +6,7 @@ import Loader from '../../components/Loader';
 import FormContainer from '../../components/FormContainer';
 import { toast } from 'react-toastify';
 import { useUpdateProductMutation, useGetProductDetailsQuery, useUploadProductImageMutation } from '../../slices/productsApiSlice';
+import Meta from '../../components/Meta';
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
@@ -81,6 +82,7 @@ const ProductEditScreen = () => {
   };
 
   return <>
+  <Meta title="Product Edit | The Kellen Collection" />
     <Link to="/admin/productlist" className="btn btn-light mt-4">
       Go Back
     </Link>

@@ -272,6 +272,20 @@ a {
   width: auto;
 }
 
+.caption {
+  background: none;
+}
+
+.caption button {
+  font-size: 40px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+.privacy {
+  margin: 0 200px;
+}
+
 @media (min-width: 1400px) {
 .container {
   max-width: 2000px;

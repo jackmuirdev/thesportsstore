@@ -7,6 +7,7 @@ import Loader from '../../components/Loader';
 import Paginate from '../../components/Paginate';
 import { toast } from 'react-toastify';
 import { useGetProductsQuery, useCreateProductMutation, useDeleteProductMutation } from '../../slices/productsApiSlice';
+import Meta from '../../components/Meta';
 
 const ProductListScreen = () => {
   const {pageNumber} = useParams();
@@ -42,6 +43,7 @@ const ProductListScreen = () => {
   }
 
   return <>
+    <Meta title="Products | The Kellen Collection" />
     <Row className='align-items-center mt-4'>
       <Col>
         <h1>Products</h1>

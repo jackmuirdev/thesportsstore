@@ -5,6 +5,7 @@ import { Form, Button, Col, Row } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { savePaymentMethod } from "../slices/cartSlice";
+import Meta from '../components/Meta';
 
 const PaymentScreen = () => {
   const [paymentMethod, setPaymentMethod] = useState('PayPal');
@@ -28,6 +29,8 @@ const PaymentScreen = () => {
   }
 
   return (
+    <>    
+    <Meta title="Payment| The Kellen Collection" />
     <FormContainer>
       <Row>
         <Col>
@@ -56,6 +59,7 @@ const PaymentScreen = () => {
         </Col>
       </Row>
     </FormContainer>
+    </>
   )
 }
 

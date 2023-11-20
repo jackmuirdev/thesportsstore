@@ -15,7 +15,7 @@ const ProductsScreen = () => {
 
   return (
     <>
-      <Meta title="The Kellen Collection" />
+      <Meta title="Shop Now | The Kellen Collection" />
       <h1 className="pt-5">All Products</h1>
       {isLoading ? (
         <Loader />

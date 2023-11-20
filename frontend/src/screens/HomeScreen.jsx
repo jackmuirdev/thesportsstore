@@ -7,12 +7,15 @@ import ProductCarousel from '../components/ProductCarousel';
 import Meta from '../components/Meta';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 
+
 const HomeScreen = () => {
   const {pageNumber, keyword} = useParams();
 
   const { isLoading, error } = useGetProductsQuery({keyword, pageNumber});
 
   return (
+    <>
+    <Meta title="Home | The Kellen Collection" />
     <div className='homepage'>
       {!keyword ? <ProductCarousel /> : (
         <Link to='/' className='btn btn-light mt-4'>Go Back</Link>
@@ -23,6 +26,7 @@ const HomeScreen = () => {
         <Meta title="The Kellen Collection"/>
       </>) }
     </div>
+    </>
   );
 };
 

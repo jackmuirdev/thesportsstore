@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import Loader from '../components/Loader';
 import { useProfileMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
+import Meta from '../components/Meta';
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
@@ -40,9 +41,11 @@ const ProfileScreen = () => {
     }
   };
   
-  return <Row className="mt-5 text-center profile">
-    <Col className="mx-3">
-      <h1>User Profile</h1>
+  return <>
+    <Meta title="My Profile | The Kellen Collection" />
+    <Row className="mt-5 text-center profile">
+      <Col className="mx-3">
+        <h1>User Profile</h1>
 
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name"className="my-2">
@@ -80,6 +83,7 @@ const ProfileScreen = () => {
       </Form>
     </Col>
   </Row>
+  </>
 }
 
 export default ProfileScreen

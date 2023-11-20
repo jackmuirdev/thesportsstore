@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import { useRegisterMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
+import Meta from '../components/Meta';
 
 const RegisterScreen = () => {
   const [name, setName] = useState('')
@@ -48,6 +49,8 @@ const RegisterScreen = () => {
   };
 
   return (
+    <>
+    <Meta title="Register | The Kellen Collection" />
     <FormContainer>
       <h1 className="mt-4">Sign Up</h1>
 
@@ -110,6 +113,7 @@ const RegisterScreen = () => {
         </Row>
       </Form>
     </FormContainer>
+    </>
   )
 }
 

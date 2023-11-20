@@ -88,7 +88,7 @@ const Footer = () => {
         </Row>
         <Row>
           <Col className='text-center copyright devware'>
-            <p>Developed by Jack Muir</p>
+            <a href='https://jackmuir.dev/'>Developed by Jack Muir</a>
           </Col>
         </Row>
       </Container>

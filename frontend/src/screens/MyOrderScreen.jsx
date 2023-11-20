@@ -4,6 +4,7 @@ import Message from "../components/Message";
 import Loader from '../components/Loader';
 import {FaTimes} from 'react-icons/fa'
 import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
+import Meta from '../components/Meta';
 
 const MyOrderScreen = () => {
   const {data: orders, isLoading, error} = useGetMyOrdersQuery();
@@ -11,6 +12,7 @@ const MyOrderScreen = () => {
 
   return (
     <>
+    <Meta title="My Orders | The Kellen Collection" />
       <Row className='mt-4'>
         <Col>
           <h1>My Orders</h1>

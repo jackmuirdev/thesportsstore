@@ -6,6 +6,7 @@ import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
 import CheckoutSteps from "../components/CheckoutSteps";
 import { addToCart, removeFromCart } from '../slices/cartSlice';
+import Meta from '../components/Meta';
 
 const CartScreen = () => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const CartScreen = () => {
 
   return (
     <>
+      <Meta title="My Bag | The Kellen Collection" />
       <CheckoutSteps step1 />
       <Row>
         <h1>Shopping Cart</h1>

@@ -1,11 +1,13 @@
 import { Form, Button, Row, Col, Image } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
 import { toast } from 'react-toastify';
+import Meta from '../components/Meta';
 
 const ContactScreen = () => {
 
   return (
     <>
+      <Meta title="Contact Us | The Kellen Collection" />
       <Row className='contact'>
         <Col md={6}>
           <FormContainer>

@@ -10,6 +10,7 @@ import { useCreateOrderMutation } from '../slices/ordersApiSlice';
 import { clearCartItems } from '../slices/cartSlice';
 import { addToCart, removeFromCart } from '../slices/cartSlice';
 import { FaTrash } from 'react-icons/fa';
+import Meta from '../components/Meta';
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ const PlaceOrderScreen = () => {
 
   return (
     <>
+      <Meta title="Place Order | The Kellen Collection" />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>

@@ -77,6 +77,7 @@ const ProductScreen = () => {
 
   return (
     <>
+      
       {isLoading ? (
         <Loader />
       ) : error ? (
