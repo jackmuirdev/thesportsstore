@@ -92,7 +92,7 @@ const ProductScreen = () => {
               <Image src={product.image} alt={product.name} fluid className='productpgimg'/>
             </Col>
 
-            <Col lg={6} className='product-col ms-5'>
+            <Col lg={6} className='product-col'>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h3 className='product-title'>{product.name}</h3>

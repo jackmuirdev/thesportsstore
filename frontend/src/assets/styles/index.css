@@ -2,6 +2,11 @@
 
 * {
   font-family: 'Questrial', sans-serif;
+  max-width: 100%;
+}
+
+body {
+  max-width: 100%;
 }
 
 main {
@@ -270,6 +275,7 @@ a {
 
 .product-col {
   width: auto;
+  margin-left: 100px;
 }
 
 .caption {
@@ -346,10 +352,33 @@ a {
   footer {
     margin-top: 50px;
   }
+  .product-col {
+    margin-left: 0px;
+    margin: auto;
+  }
 }
 
 @media only screen and (max-width: 992px) {
   .profile {
     width: 80%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  * {
+    max-width: 380px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .searchbar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .searchbar {
+    max-width: 50%;
   }
 }

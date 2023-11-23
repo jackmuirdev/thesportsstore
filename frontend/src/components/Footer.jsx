@@ -38,7 +38,7 @@ const Footer = () => {
               </Nav>
             </Navbar>
           </Col>
-          <Col lg={4} md={4} sm={6} xs={6} className='footerlinkscol'>
+          <Col lg={4} md={4} sm={6} xs={12} className='footerlinkscol'>
             <Navbar>
               <Navbar.Brand>
                 Get In Touch
@@ -56,7 +56,7 @@ const Footer = () => {
               </Nav>
             </Navbar>
           </Col>
-          <Col lg={4} md={4} sm={12} xs={12} className='footerlinkscol'>
+          <Col lg={4} md={12} sm={12} xs={6} className='footerlinkscol'>
           <Navbar>
               <Navbar.Brand>
                 Company
