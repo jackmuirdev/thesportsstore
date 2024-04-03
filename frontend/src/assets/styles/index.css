@@ -120,11 +120,19 @@ header {
   height: 85vh;
   margin: auto;
   z-index: 1;
+  border: #000 1px solid;
 }
 
-.image {
+.carousel1image {
   height: 85vh;
   width: 100%;
+  object-fit: cover;
+}
+
+.carousel2image {
+  height: 85vh;
+  width: 100%;
+  object-fit: cover;
 }
 
 hr {
@@ -279,17 +287,65 @@ a {
 }
 
 .caption {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%; 
   background: none;
 }
 
 .caption button {
-  font-size: 40px;
+  font-size: 50px;
   margin-bottom: 20px;
   border-radius: 6px;
 }
 
 .privacy {
   margin: 0 200px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(0%);
+}
+
+.carousel-indicators li {
+  background-color: white; 
+  border-color: white;
+}
+
+.carousel-indicators .active {
+  background-color: white;
+}
+
+.carousel .carousel-item {
+  position: relative;
+}
+
+.carousel .carousel-item .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s; 
+}
+
+.carousel .carousel-item:hover .caption {
+  opacity: 1; 
+}
+
+.carousel .carousel-item .caption button {
+  visibility: hidden; 
+  transition: visibility 0.3s; 
+  color: #fff;
+  background-color: black;
+}
+
+.carousel .carousel-item:hover .caption button {
+  visibility: visible;
 }
 
 @media (min-width: 1400px) {

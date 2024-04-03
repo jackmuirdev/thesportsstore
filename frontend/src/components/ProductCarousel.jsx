@@ -9,17 +9,17 @@ const ProductCarousel = () => {
 
   return isLoading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
     <Carousel pause='hover' className='mb-5 carousel'>
-        <Carousel.Item >
-          <Image src='/images/kellenhome.jpg' alt='kellenpic' className='image'/>
+        <Carousel.Item>
+          <Image src='/images/kellenhome.png' alt='kellenpic' className='carousel1image' />
           <Link to={`/products`}>
             <Carousel.Caption className='caption'>
               <button className='searchbtn'>Shop Now</button>
-            </Carousel.Caption>          
+            </Carousel.Caption>
           </Link>
         </Carousel.Item>
 
         <Carousel.Item >
-            <Image src='/images/kellenlogo.JPG' alt='kellenpic' className='image'/>
+            <Image src='/images/blackkellenlogo.png' alt='kellenpic' className='carousel2image'/>
         </Carousel.Item>
     </Carousel>
   )

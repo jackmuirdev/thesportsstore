@@ -208,21 +208,21 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>£{order.itemsPrice}</Col>
+                  <Col>£{(order.itemsPrice).toFixed(2)}</Col>
                 </Row>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>£{order.shippingPrice}</Col>
+                  <Col>£{(order.shippingPrice).toFixed(2)}</Col>
                 </Row>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>£{order.totalPrice}</Col>
+                  <Col>£{(order.totalPrice).toFixed(2)}</Col>
                 </Row>
               </ListGroup.Item>
 

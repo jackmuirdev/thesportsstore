@@ -60,7 +60,7 @@ const ProductEditScreen = () => {
         shippingCost,
         colours,
         sizes,
-      }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
+      }).unwrap();
       toast.success('Product Updated!');
       refetch();
       navigate('/admin/productlist');
